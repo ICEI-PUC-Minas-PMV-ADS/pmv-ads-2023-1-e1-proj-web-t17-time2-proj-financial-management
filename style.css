@@ -310,8 +310,8 @@ nav.show div.icon-close {
 /* POPUP LOGIN */
 
 .login-box {
-  position: absolute;
-  
+  position: fixed;
+  display: none;
   top: 50%;
   left: 50%;
   width: 400px;
@@ -321,6 +321,7 @@ nav.show div.icon-close {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.1);
   border-radius: 10px;
+  z-index: 999;
 }
 
 .login-box h2 {
