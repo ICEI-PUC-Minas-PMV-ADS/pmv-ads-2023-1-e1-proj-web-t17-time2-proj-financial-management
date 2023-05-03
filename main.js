@@ -108,3 +108,26 @@ window.addEventListener('scroll', function () {
   backToTop()
   activateMenuAtCurrentSection()
 })
+
+
+
+
+// Teste validação de login
+
+function validarlogin() {
+  var nomeUsuario = document.getElementById("username").ariaValueMax;
+  var senha = documento.getElementById("password").value;
+
+  if (nomeUsuario == "usuario123" && senha == "senha123") {
+    backToTopButton.classList.add('show')
+    } else {
+      backToTopButton.classList.remove('show')
+    }
+  }
+ 
+  //Envio de formulário
+
+  document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    validarlogin();
+  });

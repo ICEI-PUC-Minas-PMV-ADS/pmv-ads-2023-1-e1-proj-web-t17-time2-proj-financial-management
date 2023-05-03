@@ -29,7 +29,7 @@ img {
   --base-color-second: hsl(var(--hue) 65% 88%);
   --base-color-alt: hsl(var(--hue) 57% 53%);
   --title-color: hsl(var(--hue) 41% 10%);
-  --text-color: hsl(0 0% 46%);
+  --text-color: hsl(0, 0%, 46%);
   --text-color-light: hsl(0 0% 98%);
   --text-color-light-dark: hsl(0, 0%, 64%);
   --body-color: hsl(0 0% 98%);
@@ -129,7 +129,8 @@ body {
   border-bottom: 1px solid #e4e4e4;
   margin-bottom: 2rem;
   display: flex;
-
+  align-items: center;
+  
   position: fixed;
   top: 0;
   left: 0;
@@ -278,13 +279,13 @@ nav.show div.icon-close {
   background: var(--base-color-second);
   position: absolute;
   top: -16.8%;
-  left: 16.7%;
+  left: 16.8%;
   z-index: 0;
 }
 
 #home .image img {
   position: relative;
-  right: 2.93rem;
+  right: -3rem;
 }
 
 #home .image img,
@@ -299,7 +300,7 @@ nav.show div.icon-close {
 }
 
 #home .text h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 #home .text p {
@@ -311,15 +312,15 @@ nav.show div.icon-close {
 
 .login-box {
   position: fixed;
-  display: none;
+  /* display: none; */
   top: 50%;
   left: 50%;
-  width: 400px;
-  padding: 40px;
+  width: 25rem;
+  padding: 2.5rem;
   transform: translate(-50%, -50%);
   background: var(--body-color);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.1);
+  box-shadow: 0 15px 25px rgba(0,0,0,.5);
   border-radius: 10px;
   z-index: 999;
 }
@@ -331,149 +332,34 @@ nav.show div.icon-close {
   text-align: center;
 }
 
-.login-box .user-box {
-  position: relative;
+form{
+  margin-left: 25%;
 }
 
-.login-box .user-box input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: var(--text-color);
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid var(--base-color);
+.group {
+  margin-bottom: 1rem;
+}
+
+
+
+input {
+  border: solid var(--base-color-second);
+  border-radius: 0.3rem;
+  background-color: var(--body-color);
+}
+
+input:focus {
+  transition: 1;
   outline: none;
-  background: transparent;
-}
-.login-box .user-box label {
-  position: absolute;
-  top:0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: var(--text-color);
-  pointer-events: none;
-  transition: .5s;
+  border-bottom-color: var(--text-color-light-dark);
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: var(--text-color-light-dark);
-  font-size: 12px;
+.erro {
+  background-color: rgb(238, 146, 146);
+  color: black;
+  text-align: center;
+  display: none;
 }
-
-.login-box form a {
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: #03e9f4;
-  font-size: 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 4px
-}
-
-.login-box a:hover {
-  background: #03e9f4;
-  color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 5px #03e9f4,
-              0 0 25px #03e9f4,
-              0 0 50px #03e9f4,
-              0 0 100px #03e9f4;
-}
-
-.login-box a span {
-  position: absolute;
-  display: block;
-}
-
-.login-box a span:nth-child(1) {
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
-}
-
-@keyframes btn-anim1 {
-  0% {
-    left: -100%;
-  }
-  50%,100% {
-    left: 100%;
-  }
-}
-
-.login-box a span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
-}
-
-@keyframes btn-anim2 {
-  0% {
-    top: -100%;
-  }
-  50%,100% {
-    top: 100%;
-  }
-}
-
-.login-box a span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
-}
-
-@keyframes btn-anim3 {
-  0% {
-    right: -100%;
-  }
-  50%,100% {
-    right: 100%;
-  }
-}
-
-.login-box a span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
-}
-
-@keyframes btn-anim4 {
-  0% {
-    bottom: -100%;
-  }
-  50%,100% {
-    bottom: 100%;
-  }
-}
-
-
-
-
-
-
 
 
 /*====  ABOUT ============================ */
@@ -495,8 +381,8 @@ nav.show div.icon-close {
   width: 100%;
   background: var(--base-color-second);
   position: absolute;
-  top: -8.3%;
-  left: -33%;
+  top: -15.3%;
+  left: -15%;
   z-index: 0;
 }
 
@@ -515,16 +401,22 @@ nav.show div.icon-close {
 }
 
 /*====  PLANS ============================ */
-.cards.grid {
-  gap: 1.5rem;
+.cards.grid .title {
+  margin-bottom: 2px;
+
+ 
+  
 }
 
 .card {
   padding: 3.625rem 2rem;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
-  border-bottom: 0.25rem solid var(--base-color);
+  border-bottom: 0.25rem solid var();
   border-radius: 0.25rem 0.25rem 0 0;
   text-align: center;
+  font-size: 1.35rem;
+  color: rgb(5, 3, 1);
+  ;
 }
 
 .card i {
@@ -532,11 +424,14 @@ nav.show div.icon-close {
   margin-bottom: 1.5rem;
   font-size: 5rem;
   color: var(--base-color);
+  
+  
 }
 
 .card .title {
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
+  margin-bottom: 10px;
 }
 
 /*====  TESTIMONIALS ============================ */
