@@ -111,6 +111,27 @@ window.addEventListener('scroll', function () {
 
 
 
+// botão de fechar a tela de login
+
+var botaofechar = document.getElementById('button-close')
+
+
+function ocultarElemento() {
+  document.getElementById('login').style.display = "none";
+}
+
+botaofechar.addEventListener("click", ocultarElemento)
+
+// Botão de abrir a tela de login
+
+var botaoabrir = document.getElementById('button-open')
+
+function mostrarElemento() {
+  document.getElementById('login').style.display = "block";
+}
+
+botaoabrir.addEventListener("click", mostrarElemento)
+
 
 // Teste validação de login
 
