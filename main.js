@@ -133,6 +133,59 @@ function mostrarElemento() {
 botaoabrir.addEventListener("click", mostrarElemento)
 
 
+
+
+var botaoentrarlogin = document.getElementById('retornarparalogin')
+
+
+function retornarlogin() {
+  document.getElementById('login').style.display = "block";
+  document.getElementById('cadastro').style.display = "none";
+}
+
+
+botaoentrarlogin.addEventListener("click", retornarlogin)
+
+
+
+// botão de fechar a tela de cadastro
+
+var botaofecharcadastro = document.getElementById('button-close-cadastro')
+
+
+function ocultarElementocadastro() {
+  document.getElementById('cadastro').style.display = "none";
+}
+
+botaofecharcadastro.addEventListener("click", ocultarElementocadastro)
+
+// Botão de abrir a tela de cadastro
+
+var botaoabrircadastro = document.getElementById('linkcadastro')
+
+function mostrarElementocadastro() {
+  document.getElementById('cadastro').style.display = "block";
+  document.getElementById('login').style.display = "none";
+}
+
+botaoabrircadastro.addEventListener("click", mostrarElementocadastro)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Teste validação de login
 
 function validarlogin() {

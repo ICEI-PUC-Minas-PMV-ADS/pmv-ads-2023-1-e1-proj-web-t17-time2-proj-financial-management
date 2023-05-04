@@ -314,6 +314,7 @@ nav.show div.icon-close {
 
 .login-box {
   position: fixed;
+  display: none;
   top: 50%;
   left: 50%;
   width: 25rem;
@@ -341,6 +342,10 @@ form{
   margin-bottom: 1rem;
 }
 
+
+#login p {
+  margin-right: 1rem;
+}
 
 
 input {
