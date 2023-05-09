@@ -1,4 +1,4 @@
-/*  abre e fecha o menu quando clicar no icone: hamburguer e x */
+  /*  abre e fecha o menu quando clicar no icone: hamburguer e x */
 const nav = document.querySelector('#header nav')
 const toggle = document.querySelectorAll('nav .toggle')
 
@@ -183,6 +183,19 @@ botaoabrircadastro.addEventListener("click", mostrarElementocadastro)
 
 // Cadastro
 
+
+var link = document.getElementById("button_register");
+
+// adicionar um evento de clique à âncora
+link.addEventListener("click", function(event) {
+  event.preventDefault(); // previne o comportamento padrão da âncora
+  minhaFuncao(coletarDados); // chama a função desejada
+});
+
+
+
+function coletarDados() {
+
 var name_register = document.getElementById('name_register').value;
 var cpf_register = document.getElementById('cpf_register').value;
 var year_register = document.getElementById('year_register').value;
@@ -195,32 +208,34 @@ var confirmation_password_register = document.getElementById('confirmation_passw
 // criar um objeto JSON com os dados
 
 var novoItem = {
-  "user" : name_register,
-  "ID" : cpf_register,
-  "year" : year_register,
-  "telephone" :  telephone_register,
-  "email" : email_register,
-  "password" : password_register,
-  "confirm_password" : confirmation_password_register
-};
+    "user" : name_register,
+    "ID" : cpf_register,
+    "year" : year_register,
+    "telephone" :  telephone_register,
+    "email" : email_register,
+    "password" : password_register,
+    "confirm_password" : confirmation_password_register
+  };
 
-// carregar o arquivo JSON existente
+  // carregar o arquivo JSON existente
 
-fetch('banco_de_user.json')
-  .then(response => response.json())
-  .then(data => {
-    // adicionar o novo objeto JSON ao array de objetos existente
-    data.push(novoItem);
+  fetch('./app.db/banco_de_user.json')
+    .then(response => response.json())
+    .then(data => {
+      // adicionar o novo objeto JSON ao array de objetos existente
+      data.push(novoItem);
 
-    // escrever os dados atualizados no arquivo JSON local
-    var dadosAtualizados = JSON.stringify(data);
-    var file = new Blob([dadosAtualizados], {type: 'application/json'});
-    var url = URL.createObjectURL(file);
-    var link = document.createElement('a');
-    link.href = url;
-    link.download = 'banco_de_dados.json';
-    link.click();
+      // escrever os dados atualizados no arquivo JSON local
+      var dadosAtualizados = JSON.stringify(data);
+      var file = new Blob([dadosAtualizados], {type: 'application/json'});
+      var url = URL.createObjectURL(file);
+      var link = document.createElement('a');
+      link.href = url;
+      link.download = 'banco_de_dados.json';
+      link.click();
   })
   .catch(error => {
     console.error('Erro ao carregar o arquivo JSON:', error);
   });
+
+}
