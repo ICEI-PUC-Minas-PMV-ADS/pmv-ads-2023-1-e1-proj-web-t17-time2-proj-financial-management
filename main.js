@@ -181,27 +181,46 @@ botaoabrircadastro.addEventListener("click", mostrarElementocadastro)
 
 
 
+// Cadastro
+
+var name_register = document.getElementById('name_register').value;
+var cpf_register = document.getElementById('cpf_register').value;
+var year_register = document.getElementById('year_register').value;
+var telephone_register = document.getElementById('telephone_register').value;
+var email_register = document.getElementById('email_register').value;
+var password_register = document.getElementById('password_register').value;
+var confirmation_password_register = document.getElementById('confirmation_password_register').value;
 
 
+// criar um objeto JSON com os dados
 
+var novoItem = {
+  "user" : name_register,
+  "ID" : cpf_register,
+  "year" : year_register,
+  "telephone" :  telephone_register,
+  "email" : email_register,
+  "password" : password_register,
+  "confirm_password" : confirmation_password_register
+};
 
+// carregar o arquivo JSON existente
 
-// Teste validação de login
+fetch('banco_de_user.json')
+  .then(response => response.json())
+  .then(data => {
+    // adicionar o novo objeto JSON ao array de objetos existente
+    data.push(novoItem);
 
-function validarlogin() {
-  var nomeUsuario = document.getElementById("username").ariaValueMax;
-  var senha = documento.getElementById("password").value;
-
-  if (nomeUsuario == "usuario123" && senha == "senha123") {
-    backToTopButton.classList.add('show')
-    } else {
-      backToTopButton.classList.remove('show')
-    }
-  }
- 
-  //Envio de formulário
-
-  document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault();
-    validarlogin();
+    // escrever os dados atualizados no arquivo JSON local
+    var dadosAtualizados = JSON.stringify(data);
+    var file = new Blob([dadosAtualizados], {type: 'application/json'});
+    var url = URL.createObjectURL(file);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'banco_de_dados.json';
+    link.click();
+  })
+  .catch(error => {
+    console.error('Erro ao carregar o arquivo JSON:', error);
   });
