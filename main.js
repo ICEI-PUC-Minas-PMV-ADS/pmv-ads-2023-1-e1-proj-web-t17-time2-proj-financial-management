@@ -179,63 +179,96 @@ botaoabrircadastro.addEventListener("click", mostrarElementocadastro)
 
 
 
+// Cria um objeto JSON para armazenar os usuários cadastrados
+var usuarios = [
+  {
+    "nome": "matheus"
+  }
+];
 
+// Função para cadastrar um novo usuário
+function cadastrarUsuario() {
+  // Obtém os dados do novo usuário do formulário
+  var nome = document.getElementById("name_register").value;
+	var cpf = document.getElementById("cpf_register").value;
+	var year = document.getElementById("year_register").value;
+  var telephone = document.getElementById("telephone_register").value;
+  var email = document.getElementById("email_register").value;
+  var password = document.getElementById("password_register").value;
+  var confirmation_password = document.getElementById("confirmation_password_register").value;
 
-// Cadastro
+  // Cria um objeto JSON com os dados do novo usuário
+  var novoUsuario = {
+    "nome": nome,
+    "id": cpf,
+    "year": year,
+    "tel": telephone,
+    "email": email,
+    "senha": password,
+    "confirm_password": confirmation_password
+  };
 
+  // Adiciona o novo usuário ao objeto JSON de usuários
+  usuarios.push(novoUsuario);
 
-var link = document.getElementById("button_register");
+  // Armazena o objeto JSON de usuários no localStorage
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-// adicionar um evento de clique à âncora
-link.addEventListener("click", function(event) {
-  event.preventDefault(); // previne o comportamento padrão da âncora
-  minhaFuncao(coletarDados); // chama a função desejada
+  // Exibe uma mensagem de sucesso ao usuário
+  alert("Usuário cadastrado com sucesso!");
+}
+
+// Função para validar o login de um usuário
+function logarUsuario() {
+  // Obtém as credenciais do usuário do formulário
+  var email = document.getElementById("email_login_user").value;
+  var senha = document.getElementById("password_login_user").value;
+
+  // Obtém o objeto JSON de usuários armazenado no localStorage
+  var usuariosArmazenados = localStorage.getItem("usuarios");
+
+  // Se o objeto JSON não existir, exibe uma mensagem de erro
+  if (!usuariosArmazenados) {
+    alert("Não há usuários cadastrados!");
+    return;
+  }
+
+  // Converte o objeto JSON de usuários em um array de objetos
+  var usuarios = JSON.parse(usuariosArmazenados);
+
+  // Procura pelo usuário com as credenciais fornecidas
+  var usuarioEncontrado = usuarios.find(function(usuario) {
+    return usuario.email === email && usuario.senha === senha;
+  });
+
+  // Se o usuário for encontrado, exibe uma mensagem de sucesso
+  if (usuarioEncontrado) {
+    alert("Login efetuado com sucesso!");
+  }
+  // Caso contrário, exibe uma mensagem de erro
+  else {
+    alert("Credenciais inválidas!");
+  }
+}
+
+var linkCadastro = document.getElementById("button_register");
+linkCadastro.addEventListener("click", function(event) {
+  event.preventDefault(); // impede que o link abra uma nova página
+  cadastrarUsuario(); // chama a função que cadastra o usuário
+  // opcionalmente, você pode redirecionar o usuário para a página de login ou exibir uma mensagem de sucesso aqui
+});
+
+var linklogin= document.getElementById("login_entrar");
+linklogin.addEventListener("click", function(event) {
+  event.preventDefault(); // impede que o link abra uma nova página
+  logarUsuario(); // chama a função que logar usuário
+  window.location.href = "user-page.html";
 });
 
 
 
-function coletarDados() {
-
-var name_register = document.getElementById('name_register').value;
-var cpf_register = document.getElementById('cpf_register').value;
-var year_register = document.getElementById('year_register').value;
-var telephone_register = document.getElementById('telephone_register').value;
-var email_register = document.getElementById('email_register').value;
-var password_register = document.getElementById('password_register').value;
-var confirmation_password_register = document.getElementById('confirmation_password_register').value;
 
 
-// criar um objeto JSON com os dados
 
-var novoItem = {
-    "user" : name_register,
-    "ID" : cpf_register,
-    "year" : year_register,
-    "telephone" :  telephone_register,
-    "email" : email_register,
-    "password" : password_register,
-    "confirm_password" : confirmation_password_register
-  };
-
-  // carregar o arquivo JSON existente
-
-  fetch('./app.db/banco_de_user.json')
-    .then(response => response.json())
-    .then(data => {
-      // adicionar o novo objeto JSON ao array de objetos existente
-      data.push(novoItem);
-
-      // escrever os dados atualizados no arquivo JSON local
-      var dadosAtualizados = JSON.stringify(data);
-      var file = new Blob([dadosAtualizados], {type: 'application/json'});
-      var url = URL.createObjectURL(file);
-      var link = document.createElement('a');
-      link.href = url;
-      link.download = 'banco_de_dados.json';
-      link.click();
-  })
-  .catch(error => {
-    console.error('Erro ao carregar o arquivo JSON:', error);
-  });
-
-}
+console.log(usuarios)
+console.log(logarUsuario)

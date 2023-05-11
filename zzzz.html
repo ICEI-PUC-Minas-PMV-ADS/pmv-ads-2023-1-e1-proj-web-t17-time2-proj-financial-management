@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cadastro de usuários</title>
+	<script>
+		// Cria um objeto JSON para armazenar os usuários cadastrados
+		var usuarios = [];
+
+		// Função para cadastrar um novo usuário
+		function cadastrarUsuario() {
+			// Obtém os dados do novo usuário do formulário
+			var nome = document.getElementById("name_register").value;
+			var cpf = document.getElementById("cpf_register").value;
+			var year = document.getElementById("year_register").value;
+            var email = document.getElementById("senha").value;
+            var password = document.getElementById("senha").value;
+
+			// Cria um objeto JSON com os dados do novo usuário
+			var novoUsuario = {
+				nome: nome,
+				email: email,
+				senha: senha
+			};
+
+			// Adiciona o novo usuário ao objeto JSON de usuários
+			usuarios.push(novoUsuario);
+
+			// Armazena o objeto JSON de usuários no localStorage
+			localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+			// Exibe uma mensagem de sucesso ao usuário
+			alert("Usuário cadastrado com sucesso!");
+		}
+
+		// Função para validar o login de um usuário
+		function logarUsuario() {
+			// Obtém as credenciais do usuário do formulário
+			var email = document.getElementById("email").value;
+			var senha = document.getElementById("senha").value;
+
+			// Obtém o objeto JSON de usuários armazenado no localStorage
+			var usuariosArmazenados = localStorage.getItem("usuarios");
+
+			// Se o objeto JSON não existir, exibe uma mensagem de erro
+			if (!usuariosArmazenados) {
+				alert("Não há usuários cadastrados!");
+				return;
+			}
+
+			// Converte o objeto JSON de usuários em um array de objetos
+			var usuarios = JSON.parse(usuariosArmazenados);
+
+			// Procura pelo usuário com as credenciais fornecidas
+			var usuarioEncontrado = usuarios.find(function(usuario) {
+				return usuario.email === email && usuario.senha === senha;
+			});
+
+			// Se o usuário for encontrado, exibe uma mensagem de sucesso
+			if (usuarioEncontrado) {
+				alert("Login efetuado com sucesso!");
+			}
+			// Caso contrário, exibe uma mensagem de erro
+			else {
+				alert("Credenciais inválidas!");
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Cadastro de usuários</h1>
+
+	<!-- Formulário de cadastro -->
+	<label for="nome">Nome:</label>
+	<input type="text" id="nome"><br>
+
+	<label for="email">E-mail:</label>
+	<input type="email" id="email"><br>
+
+	<label for="senha">Senha:</label>
+	<input type="password" id="senha"><br>
+
+	<button onclick="cadastrarUsuario()">Cadastrar</button>
+
+	<hr>
+
+	<!-- Formulário de login -->
+	<h2>Login</h2>
+
+	<label for="email">E-mail:</label>
+	<input type="email" id="email"><br>
+
+	<label for="senha">Senha:</label>
+	<input type="password" id="senha"><br>
+
+	<button onclick="logarUsuario()">Entrar</button>
+</body>
+</html>
