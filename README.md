@@ -1,23 +1,23 @@
-# TÍTULO DO PROJETO
+# SmartFinances
 
-`CURSO`
+`Análise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
+`Desenvolvimento de Aplicação Web Front-End`
 
-`SEMESTRE`
+`Primeiro semestre`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto que estamos desenvolvendo é um software de gestão financeira voltado para pessoas comuns que desejam gerenciar suas finanças pessoais. Com o objetivo de auxiliar o usuário no controle e análise de suas receitas e despesas.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Pedro Lima Pedrosa
+* Matheus Carvalho
+* Carlos Eduardo De Lima assis
+* Adriel Agnes Costa Bosco
 
 ## Orientador
 
-* Nome completo do professor 1
+* Clóvis Lemos Tavares
 
 ## Instruções de utilização
 
