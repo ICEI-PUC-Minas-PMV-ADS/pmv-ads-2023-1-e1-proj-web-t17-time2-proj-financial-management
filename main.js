@@ -170,15 +170,6 @@ function mostrarElementocadastro() {
 
 botaoabrircadastro.addEventListener("click", mostrarElementocadastro)
 
-
-
-
-
-
-
-
-
-
 // Cria um objeto JSON para armazenar os usuários cadastrados
 var usuarios = [
   {
@@ -243,7 +234,7 @@ function logarUsuario() {
 
   // Se o usuário for encontrado, exibe uma mensagem de sucesso
   if (usuarioEncontrado) {
-    alert("Login efetuado com sucesso!");
+    window.location.href = "user-page.html";
   }
   // Caso contrário, exibe uma mensagem de erro
   else {
@@ -262,13 +253,22 @@ var linklogin= document.getElementById("login_entrar");
 linklogin.addEventListener("click", function(event) {
   event.preventDefault(); // impede que o link abra uma nova página
   logarUsuario(); // chama a função que logar usuário
-  window.location.href = "user-page.html";
+  
 });
-
-
-
 
 
 
 console.log(usuarios)
 console.log(logarUsuario)
+
+
+
+
+
+
+
+
+
+
+
+
