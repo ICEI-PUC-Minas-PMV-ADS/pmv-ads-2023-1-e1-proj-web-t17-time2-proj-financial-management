@@ -173,7 +173,13 @@ botaoabrircadastro.addEventListener("click", mostrarElementocadastro)
 // Cria um objeto JSON para armazenar os usuários cadastrados
 var usuarios = [
   {
-    "nome": "matheus"
+    "nome": "nome",
+    "id": "123",
+    "year": "year",
+    "tel": "telephone",
+    "email": "email",
+    "senha": "123",
+    "confirm_password": "123",
   }
 ];
 
@@ -212,7 +218,7 @@ function cadastrarUsuario() {
 // Função para validar o login de um usuário
 function logarUsuario() {
   // Obtém as credenciais do usuário do formulário
-  var email = document.getElementById("email_login_user").value;
+  var id = document.getElementById("cpf_login_user").value;
   var senha = document.getElementById("password_login_user").value;
 
   // Obtém o objeto JSON de usuários armazenado no localStorage
@@ -229,12 +235,14 @@ function logarUsuario() {
 
   // Procura pelo usuário com as credenciais fornecidas
   var usuarioEncontrado = usuarios.find(function(usuario) {
-    return usuario.email === email && usuario.senha === senha;
+    return usuario.id === id && usuario.senha === senha;
+    
   });
 
   // Se o usuário for encontrado, exibe uma mensagem de sucesso
   if (usuarioEncontrado) {
-    window.location.href = "user-page.html";
+    var url = "user-page.html?id=" + id;
+    window.location.href = url;
   }
   // Caso contrário, exibe uma mensagem de erro
   else {
@@ -255,6 +263,7 @@ linklogin.addEventListener("click", function(event) {
   logarUsuario(); // chama a função que logar usuário
   
 });
+
 
 
 
