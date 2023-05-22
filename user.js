@@ -48,12 +48,13 @@ var movimentacoes = [
   }
 ];
 
+
 // Função para cadastrar um nova movimentação
 function cadastrarmov() {
   // Obtém os dados do novo usuário do formulário
   var tipo = document.getElementById("tipo").value;
   var descricaomov = document.getElementById("desc").value;
-  var valuemov = document.getElementById("valuemov").value;
+  var valuemov = parseFloat(document.getElementById("valuemov").value);
   var datemov = document.getElementById("datemov").value;
   var nicho = document.getElementById("nicho").value;
   
@@ -79,7 +80,8 @@ var cadastrarmovte = document.getElementById("register_mov");
 cadastrarmovte.addEventListener("click", function(event) {
   alert('cadastrado com sucesso')
   event.preventDefault(); // impede que o link abra uma nova página
-  cadastrarmov(); // chama a função que cadastra o usuário
+  calculate();
+  cadastrarmov(); // chama a função que cadastra o valor
   // opcionalmente, você pode redirecionar o usuário para a página de login ou exibir uma mensagem de sucesso aqui
 });
 
@@ -111,31 +113,23 @@ console.log(movimentacoesReceita)
 console.log(movimentacoes)
 
 
+function calculate() {
+  var totalReceitas = 0;
+  var totalDespesas = 0;
 
-var totalReceitas = 0;
-var totalDespesas = 0;
-
-for (var i = 0; i < movimentacoes.length; i++) {
-  var movimentacao = movimentacoes[i];
-  
-  if (movimentacao.tipo === "receita") {
-    totalReceitas += movimentacao.valor;
-  } else if (movimentacao.tipo === "despesa") {
-    totalDespesas += movimentacao.valor;
+  for (var i = 0; i < movimentacoes.length; i++) {
+    var movimentacao = movimentacoes[i];
+    
+    if (movimentacao.tipo === "receita") {
+      totalReceitas += movimentacao.valor;
+    } else if (movimentacao.tipo === "despesa") {
+      totalDespesas += movimentacao.valor;
+    }
   }
+
+  var resultado = totalReceitas - totalDespesas;
+  var cardResultado = document.getElementById("cardResultado");
+  cardResultado.innerHTML = "Saldo: " + resultado;
 }
-
-var resultado = totalReceitas - totalDespesas;
-var cardResultado = document.getElementById("cardResultado");
-cardResultado.innerHTML = "Saldo: " + resultado;
-
-
-
-
-
-
-
-
-
 
 
