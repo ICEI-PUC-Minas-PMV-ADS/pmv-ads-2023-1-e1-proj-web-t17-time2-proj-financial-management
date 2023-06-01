@@ -5,12 +5,8 @@ var urlParams = new URLSearchParams(window.location.search);
 // Extrair o valor do ID
 var userID = urlParams.get('id');
 
-console.log("ID do usuário:", userID);
-
-
-
 // Cria um objeto JSON para armazenar as movimentações
-var movimentacoes = [
+var movimentacoesbd = [
   {
     "id": 123, 
     "tipo": "receita",
@@ -19,7 +15,6 @@ var movimentacoes = [
     "datamov": "test",
     "classificao": "teste"
   },
-
   {
     "id": 123, 
     "tipo": "despesa",
@@ -28,7 +23,6 @@ var movimentacoes = [
     "datamov": "test",
     "classificao": "teste"
   },
-
   {
     "id": 123, 
     "tipo": "receita",
@@ -37,7 +31,6 @@ var movimentacoes = [
     "datamov": "test",
     "classificao": "teste"
   },
-
   {
     "id": 11111111111, 
     "tipo": "despesa",
@@ -47,6 +40,24 @@ var movimentacoes = [
     "classificao": "teste"
   }
 ];
+
+// Filtrar as movimentações com base no userID
+var filteredMovimentacoes = movimentacoesbd.filter(function(movimentacoesbd) {
+  return movimentacoesbd.id === Number(userID);
+});
+
+// Retornar apenas os valores relevantes das movimentações
+var movimentacoes = filteredMovimentacoes.map(function(movimentacoesbd) {
+  return {
+    tipo: movimentacoesbd.tipo,
+    descricao: movimentacoesbd.descricao,
+    valor: movimentacoesbd.valor,
+    datamov: movimentacoesbd.datamov,
+    classificao: movimentacoesbd.classificao
+  };
+});
+
+console.log(movimentacoes);
 
 
 // Função para cadastrar um nova movimentação
@@ -102,7 +113,7 @@ var movimentacoesReceita = movimentacoes.filter(function(movimentacao) {
 
 
 
-console.log(movimentacoesReceita)
+// console.log(movimentacoesReceita)
 
 
 
@@ -110,7 +121,7 @@ console.log(movimentacoesReceita)
 
 
 
-console.log(movimentacoes)
+// console.log(movimentacoes)
 
 
 function calculate() {
@@ -131,5 +142,55 @@ function calculate() {
   var cardResultado = document.getElementById("cardResultado");
   cardResultado.innerHTML = "Saldo: " + resultado;
 }
+
+var usuarios = [
+  {
+    "id": 123, 
+    "tipo": "receita",
+    "descricao": "teste",
+    "valor": 1500,
+    "datamov": "test",
+    "classificao": "teste"
+  },
+
+  {
+    "id": 123, 
+    "tipo": "despesa",
+    "descricao": "teste",
+    "valor": 3500,
+    "datamov": "test",
+    "classificao": "teste"
+  },
+
+  {
+    "id": 123, 
+    "tipo": "receita",
+    "descricao": "teste",
+    "valor": 2500,
+    "datamov": "test",
+    "classificao": "teste"
+  },
+
+  {
+    "id": 11111111111, 
+    "tipo": "despesa",
+    "descricao": "teste",
+    "valor": 7500,
+    "datamov": "test",
+    "classificao": "teste"
+  }
+]; // IDs dos usuários que você deseja filtrar
+
+var movimentacoesFiltradasPorUsuario = {};
+
+usuarios.forEach(function(userId) {
+  var movimentacoesUsuario = movimentacoes.filter(function(movimentacao) {
+    return movimentacao.id === userId;
+  });
+
+  movimentacoesFiltradasPorUsuario[userId] = movimentacoesUsuario;
+});
+
+console.log(movimentacoesFiltradasPorUsuario);
 
 
