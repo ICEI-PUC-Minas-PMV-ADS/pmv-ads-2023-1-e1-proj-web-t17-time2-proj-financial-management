@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./docs/img/Smart-Finances-_1_.ico" type="image/x-icon">
     <title>SmartFinances</title>
 </head>
 <body>
@@ -14,29 +15,47 @@
         </nav>
     </header>
    <main>
+    <div class="FormularioMovimentacoes">
         <form id="movimentacoes">
+            <fieldset>
+                <legend><b>Movimentações</b></legend>
+            <br>
             <label for="tipo">Tipo:</label>
             <select id="tipo" name="tipo">
               <option value="receita">Receita</option>
               <option value="despesa">Despesa</option>
             </select>
-            <br>
-          
-            <label for="descricao">Descrição:</label>
-            <input type="text" id="desc" name="descricao"><br>
-          
-            <label for="valor">Valor:</label>
-            <input type="number" id="valuemov" name="valor"><br>
-          
+            <br><br>
+
+            <div class="DivMovimentacoes">
+            <input type="text" id="desc" name="descricao" class="ImputMovimentacoes">
+            <label for="descricao" class="LabelImput">Descrição:</label>
+            </div>
+            <br><br>
+
+            <div class="DivMovimentacoes">
+            <input type="number" id="valuemov" name="valor" class="ImputMovimentacoes">
+            <label for="valor" class="LabelImput">Valor:</label>
+            </div>
+            <br><br>
+
+            <div class="DivMovimentacoes">
             <label for="data">Data:</label>
-            <input type="date" id="datemov" name="data"><br>
-          
-            <label for="categoria">Categoria:</label>
-            <input type="text" id="nicho" name="categoria"><br>
+            <input type="date" id="datemov" name="data" class="ImputMovimentacoes">
+            </div>
+            <br><br>
+
+            <div class="DivMovimentacoes">
+            <input type="text" id="nicho" name="categoria" class="ImputMovimentacoes">
+            <label for="categoria" class="LabelImput">Categoria:</label>
+            </div>
+            <br><br>
           
             <a type="submite" class="button" id="register_mov">adicionar<a>
             <input type="reset" value="Limpar">
+            </fieldset>
         </form>
+    </div>
 
 
 

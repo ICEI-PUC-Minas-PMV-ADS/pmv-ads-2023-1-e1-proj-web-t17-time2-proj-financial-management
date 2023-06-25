@@ -845,3 +845,48 @@ footer .social a:hover {
   }
 }
 /* medium devices: 767 > */
+
+/* Estilização Movimentações */
+.FormularioMovimentacoes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+}
+fieldset {
+  border: 3px solid green;
+  border-radius: 8px;
+  padding: 10px;
+}
+fieldset legend {
+  border: 3px solid green;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: green;
+  color: white;
+}
+.DivMovimentacoes {
+  position: relative;
+}
+.ImputMovimentacoes{
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 15px;
+  width: 100%;
+}
+.LabelImput {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  pointer-events: none;
+  transition: .5s;
+}
+.ImputMovimentacoes:focus ~ .LabelImput,
+.ImputMovimentacoes:valid ~ .LabelImput {
+  top: -20px;
+  font-size: 12px;
+  color: green;
+}
