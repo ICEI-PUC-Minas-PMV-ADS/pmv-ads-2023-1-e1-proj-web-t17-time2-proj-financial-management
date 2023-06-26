@@ -455,9 +455,9 @@ input:focus {
 
 .cardS .back {
   transform: perspective(600px) rotateY(180deg);
-  background: rgb(3, 35, 54);
+  background: white;
   padding: 15px;
-  color: #f3f3f3;
+  color: #000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -472,7 +472,7 @@ input:focus {
 }
 
 .cardS .back .link a{
-  color: #f3f3f3;
+  color: #000;
 }
 
 .cardS .back h3 {

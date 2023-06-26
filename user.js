@@ -7,38 +7,7 @@ var userID = urlParams.get('id');
 
 // Cria um objeto JSON para armazenar as movimentações
 var movimentacoesbd = [
-  {
-    "id": 123, 
-    "tipo": "receita",
-    "descricao": "teste",
-    "valor": 1500,
-    "datamov": "test",
-    "classificao": "teste"
-  },
-  {
-    "id": 123, 
-    "tipo": "despesa",
-    "descricao": "teste",
-    "valor": 3500,
-    "datamov": "test",
-    "classificao": "teste"
-  },
-  {
-    "id": 123, 
-    "tipo": "receita",
-    "descricao": "teste",
-    "valor": 2500,
-    "datamov": "test",
-    "classificao": "teste"
-  },
-  {
-    "id": 11111111111, 
-    "tipo": "despesa",
-    "descricao": "teste",
-    "valor": 7500,
-    "datamov": "test",
-    "classificao": "teste"
-  }
+  {}
 ];
 
 // Filtrar as movimentações com base no userID
@@ -89,7 +58,6 @@ function cadastrarmov() {
 
 var cadastrarmovte = document.getElementById("register_mov");
 cadastrarmovte.addEventListener("click", function(event) {
-  alert('cadastrado com sucesso')
   event.preventDefault(); // impede que o link abra uma nova página
   calculate();
   cadastrarmov(); // chama a função que cadastra o valor
@@ -144,41 +112,7 @@ function calculate() {
 }
 
 var usuarios = [
-  {
-    "id": 123, 
-    "tipo": "receita",
-    "descricao": "teste",
-    "valor": 1500,
-    "datamov": "test",
-    "classificao": "teste"
-  },
-
-  {
-    "id": 123, 
-    "tipo": "despesa",
-    "descricao": "teste",
-    "valor": 3500,
-    "datamov": "test",
-    "classificao": "teste"
-  },
-
-  {
-    "id": 123, 
-    "tipo": "receita",
-    "descricao": "teste",
-    "valor": 2500,
-    "datamov": "test",
-    "classificao": "teste"
-  },
-
-  {
-    "id": 11111111111, 
-    "tipo": "despesa",
-    "descricao": "teste",
-    "valor": 7500,
-    "datamov": "test",
-    "classificao": "teste"
-  }
+  {}
 ]; // IDs dos usuários que você deseja filtrar
 
 var movimentacoesFiltradasPorUsuario = {};
